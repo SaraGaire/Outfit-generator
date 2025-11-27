@@ -1,0 +1,66 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  passwordHash     String
+  height           String?
+  gender           String?
+  location         String?
+  stylePreferences Json?
+  dailyOutfitEnabled Boolean @default(false)
+  defaultDailyLook String?
+
+  items            Item[]
+  outfits          Outfit[]
+  feedbacks        Feedback[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Item {
+  id             String   @id @default(cuid())
+  user           User     @relation(fields: [userId], references: [id])
+  userId         String
+  imageUrl       String
+  category       String
+  subCategory    String?
+  colors         Json?
+  patterns       String?
+  fit            String?
+  formalityLevel String?
+  seasons        Json?
+  styleTags      Json?
+  metadata       Json?
+  createdAt      DateTime @default(now())
+}
+
+model Outfit {
+  id             String   @id @default(cuid())
+  user           User     @relation(fields: [userId], references: [id])
+  userId         String
+  itemIds        String[]
+  requestedLook  String
+  weatherContext Json?
+  notes          String?
+  createdAt      DateTime @default(now())
+  feedbacks      Feedback[]
+}
+
+model Feedback {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  outfit    Outfit   @relation(fields: [outfitId], references: [id])
+  outfitId  String
+  rating    Int
+  notes     String?
+  createdAt DateTime @default(now())
+}
