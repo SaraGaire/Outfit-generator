@@ -129,14 +129,78 @@
       queue.module.ts
       queue.constants.ts
 
-#1. Create the App
-#const app = await NestFactory.create(AppModule);
-#2. Set API Prefix
-#app.setGlobalPrefix('api');
-#3. Enable Validation
-#app.useGlobalPipes(new ValidationPipe({...}))
+# NestJS Bootstrap Configuration
 
-#whitelist: true - Strips out any properties that aren't defined in your DTOs (Data Transfer Objects)
-#forbidNonWhitelisted: true - Throws an error if someone sends unexpected properties
-#transform: true - Automatically converts incoming data to the correct types (e.g., string "123" becomes number 123)
+This file starts the backend server with essential configurations.
+
+## 🚀 Setup Steps
+
+### 1️⃣ Create the App
+```typescript
+const app = await NestFactory.create(AppModule);
+```
+- Initializes the NestJS application from AppModule
+
+---
+
+### 2️⃣ Set API Prefix
+```typescript
+app.setGlobalPrefix('api');
+```
+- Adds `/api` to all routes
+- Example: `/users` becomes `/api/users`
+
+---
+
+### 3️⃣ Enable Validation
+```typescript
+app.useGlobalPipes(new ValidationPipe({
+  whitelist: true,
+  forbidNonWhitelisted: true,
+  transform: true,
+}));
+```
+
+| Option | Purpose |
+|--------|---------|
+| `whitelist: true` | Removes properties not defined in DTOs |
+| `forbidNonWhitelisted: true` | Throws error for unexpected properties |
+| `transform: true` | Auto-converts data types (e.g., `"123"` → `123`) |
+
+---
+
+### 4️⃣ Enable CORS
+```typescript
+app.enableCors({
+  origin: ['http://localhost:3000'],
+  credentials: true,
+});
+```
+
+- ✅ Allows frontend (`localhost:3000`) to communicate with backend
+- ✅ **CORS** = Cross-Origin Resource Sharing (browser security)
+- ✅ `credentials: true` enables cookies/auth headers
+
+---
+
+### 5️⃣ Start the Server
+```typescript
+const port = process.env.PORT || 4000;
+await app.listen(port);
+```
+
+- 🌐 Server runs on **port 4000** (or custom PORT from environment)
+- 🎉 Ready to handle requests!
+
+---
+
+## 📌 Summary
+
+This bootstrap file ensures:
+- ✅ Data validation
+- ✅ Organized API routes
+- ✅ Cross-origin security
+- ✅ Running server
+
+**Your backend is now live! 🚀**
 
