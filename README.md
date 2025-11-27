@@ -128,3 +128,15 @@
       price-tracking.processor.ts
       queue.module.ts
       queue.constants.ts
+
+#1. Create the App
+#const app = await NestFactory.create(AppModule);
+#2. Set API Prefix
+#app.setGlobalPrefix('api');
+#3. Enable Validation
+#app.useGlobalPipes(new ValidationPipe({...}))
+
+#whitelist: true - Strips out any properties that aren't defined in your DTOs (Data Transfer Objects)
+#forbidNonWhitelisted: true - Throws an error if someone sends unexpected properties
+#transform: true - Automatically converts incoming data to the correct types (e.g., string "123" becomes number 123)
+
