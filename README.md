@@ -192,15 +192,5 @@ await app.listen(port);
 - 🌐 Server runs on **port 4000** (or custom PORT from environment)
 - 🎉 Ready to handle requests!
 
----
 
-## 📌 Summary
-
-This bootstrap file ensures:
-- ✅ Data validation
-- ✅ Organized API routes
-- ✅ Cross-origin security
-- ✅ Running server
-
-**Your backend is now live! 🚀**
 
