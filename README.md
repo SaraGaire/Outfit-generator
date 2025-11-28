@@ -192,5 +192,14 @@ await app.listen(port);
 - 🌐 Server runs on **port 4000** (or custom PORT from environment)
 - 🎉 Ready to handle requests!
 
+Tech Stack
+
+Backend Framework: NestJS (TypeScript)
+AI/ML Services: Python (FastAPI, NumPy, scikit-learn, OpenAI embeddings)
+Database: PostgreSQL + Prisma ORM
+Cloud: AWS (S3, Lambda, EventBridge, SQS, CloudWatch, IAM)
+Jobs: Redis / BullMQ
+Vector Search: pgvector / Pinecone (optional)
+
 
 
