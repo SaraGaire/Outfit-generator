@@ -223,3 +223,41 @@ Vector Search: pgvector / Pinecone (optional)
 
 
 
+📦 Setup Instructions
+1. Clone the Repository
+git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+cd YOUR-REPO-NAME
+
+2. Install Server Dependencies (TypeScript Backend)
+npm install
+
+3. Install Python Microservice Dependencies
+
+The project includes Python-based AI microservices (vision analysis, clustering, embeddings, color processing, etc.).
+
+pip install -r requirements.txt
+
+4. Environment Variables
+
+Create a .env file in the root directory with environment variables such as:
+
+DATABASE_URL=postgres://...
+JWT_SECRET=your-secret-key
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_REGION=...
+S3_BUCKET_NAME=...
+
+5. Run the TypeScript Backend (NestJS)
+npm run start:dev
+
+
+This launches the core API at:
+
+http://localhost:4000
+
+6. Run the Python AI Microservices
+
+From the python-services folder (or equivalent):
+
+uvicorn main:app --reload
