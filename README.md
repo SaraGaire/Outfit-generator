@@ -201,5 +201,25 @@ Cloud: AWS (S3, Lambda, EventBridge, SQS, CloudWatch, IAM)
 Jobs: Redis / BullMQ
 Vector Search: pgvector / Pinecone (optional)
 
+                    ┌────────────────────┐
+           Image →  │ Python Vision API  │
+                    │  (FastAPI + ML)    │
+                    └─────────┬──────────┘
+                              │
+                              ▼
+                     ┌───────────────────┐
+                     │ TS Backend (Nest) │
+                     │ Auth / Wardrobe   │
+                     │ Outfit Engine     │
+                     └─────────┬─────────┘
+                               │
+                 ┌─────────────┼─────────────┐
+                 ▼             ▼             ▼
+        ┌────────────┐ ┌──────────────┐ ┌─────────────┐
+        │ AWS S3      │ │ AWS RDS      │ │ SQS Workers │
+        │ Image Store │ │ PostgreSQL   │ │ AI Jobs     │
+        └────────────┘ └──────────────┘ └─────────────┘
+
+
 
 
