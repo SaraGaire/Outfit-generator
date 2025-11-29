@@ -261,3 +261,42 @@ http://localhost:4000
 From the python-services folder (or equivalent):
 
 uvicorn main:app --reload
+
+
+
+         ┌───────────────────────────┐
+         │         Frontend          │
+         │ (Next.js, Tailwind, SSR)  │
+         └──────────────┬────────────┘
+                        ▼
+          ┌─────────────────────────┐
+          │       API Gateway       │
+          │      (NestJS/TS)        │
+          └─────────┬─────┬────────┘
+                    │     │
+                    │     ▼
+                    │   Background Workers
+                    │ (BullMQ / Temporal)
+                    ▼
+        ┌───────────────────────────┐
+        │      Core Services        │
+        │  Auth / Wardrobe / AI /   │
+        │ Outfit / Weather / Shop   │
+        └────────────┬──────────────┘
+                     ▼
+          ┌─────────────────────────┐
+          │      ML / AI Layer      │
+          │  Vision, Embeddings,     │
+          │ Style Models, LLMs       │
+          └────────────┬────────────┘
+                       ▼
+           ┌────────────────────────┐
+           │      Data Layer         │
+           │ Postgres + Vector DB    │
+           │ (pgvector / Pinecone)   │
+           └────────────────────────┘
+
+          ┌─────────────────────────┐
+          │  Object Storage (S3)    │
+          └─────────────────────────┘
+
