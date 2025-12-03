@@ -1,0 +1,7 @@
+{
+  "email": "user@example.com",
+  "password": "secret123",
+  "height": "180cm",
+  "gender": "male",
+  "location": "Berlin"
+}
