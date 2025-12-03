@@ -1,0 +1,13 @@
+{
+  "id": "item-id",
+  "imageUrl": "https://storage/abc.jpg",
+  "category": "top",
+  "subCategory": "hoodie",
+  "colors": ["black"],
+  "patterns": "plain",
+  "fit": "oversized",
+  "formalityLevel": "casual",
+  "seasons": ["autumn", "winter"],
+  "styleTags": ["streetwear"],
+  "createdAt": "2025-01-10T10:00:00Z"
+}
